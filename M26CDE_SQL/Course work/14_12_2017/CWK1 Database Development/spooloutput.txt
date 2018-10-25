@@ -1,0 +1,239 @@
+Dropping tables -------------------------------------------------------
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+Table Creations ------------------------------------------------
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+Inserting Conditions(name,description)
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Inserting Patients(name,address,dateOfBirth,bloodGroup,phoneNo)
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Inserting Surgery(name,address,phoneNo)
+
+1 row created.
+
+
+1 row created.
+
+Insertig OpeningTimes(ID,Surgery,day,openingTime,closingTime)
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Insertig Gp(name,surgery,speciality)
+
+1 row created.
+
+
+1 row created.
+
+Insertig Medication(name)
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Inserting Perscriptions(ID,medicationFk,quantity,units,instructions)
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Insertig Visits (visitDate,patientFk,gpFk,conditionFk,perscriptionFk,surgeryFk)
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Performing Query 1
+
+NAME                 B                                                          
+-------------------- -                                                          
+tim                  A                                                          
+tom                  C                                                          
+
+Performing Query 2
+
+PATIENTNAME          CONDITIONNAME                  VISITDATE                   
+-------------------- ------------------------------ ---------                   
+tom                  Type 2 Diabetes                01-JAN-07                   
+
+Performing Query 3
+
+PATIENTNAME                                                                     
+--------------------                                                            
+tom                                                                             
+
+Performing Query 4
+
+SURGERYADDRESS                 GPNAME                                           
+------------------------------ --------------------                             
+6 camphill road                Dr. S. Patel                                     
+
+Performing Query 5
+
+GPNAME               VISITCOUNT                                                 
+-------------------- ----------                                                 
+Dr. S. Patel                  4                                                 
+
+
+Commit complete.
+

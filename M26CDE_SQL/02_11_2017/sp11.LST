@@ -1,0 +1,10 @@
+SQL> SELECT * from tab
+  2  ;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+BIN$RyYRZaAnRquvnInI110AAg==$0 TABLE                                            
+BIN$I4mvjtcdTZWnu4N86UEsKQ==$0 TABLE                                            
+AIRCRAFT                       TABLE                                            
+
+SQL> spool off

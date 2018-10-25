@@ -1,0 +1,56 @@
+
+INSert INTO 
+
+	INSERT INTO table_name VALUES (val1,val2,val3) - "values must be enter in order that columns are created"
+
+	INSERT INTO table_name (Column1, column2) VALUES (val1,val2)
+
+UPDATE 
+	UPDATE Student SET loan = loan + 3000 - "Update loan of all students"
+	UPDATE STudent SET loan = loan + 3000 WHERE s_id = 2 - "UPDATE student with id"
+
+SELECT 
+	SELECT column_list FROM table_name [WHERE clause][GROUP BY clause][HAVING clause ORDER BY clause] 
+	
+	SELECT DISTINCT column_name FROM table_name - "Remove duplicate rows"
+
+DELETE 
+	DELET FROM table_name WHERE clause
+
+LIKE 
+	The like character recognises the two following symobls, % and -.
+	% represents any sequence of zero or more characters
+	_ represents any single character
+	SELECT lastname FROM Student WHERE lastName LIKE "%Smith"
+BOOLEAN OR
+	SELECT name FROM table WHERE id ='0' OR id ='1'
+
+AGGREGATE FUNCTIONS
+	COUNT
+	MAX
+	MIN
+	SUM
+	AVG
+
+GROUP BY 
+	SELECT COUNT(s_id) FROM Student
+
+HAVING 
+	SELECT grade,COUNT(s_id) FROM Student WHERE grade > 50GROUP BY grade HAVING COUNT (s_id) > 10
+
+
+ALIAS FOR TABLES
+	SELECT m_name, sc_name FROM Module M, School SC
+
+
+SCALAR AND VECTOR
+	There are two return types for a select statement. 
+		SELECT name FROM table_name WHERE id = '2' - Scalar single value, use = operator
+		SELECT name FROM table_name  - Vector value, use IN operator
+								
+JOIN OPERATIONS AND SUB QUERIES
+	UNION Operator - combine the result-set of two or more select statements
+		SELECT name FROM Student1 UNION SELECT name FROM Student2
+	INTERSECT Operator - The Intersect operator is used to return the results of 2 or more SELECT Statements. How ever it only returns the rows selected by all queries.
+		SELECT name FROM Student1 INTERSECT Select name FROM Student2
+				

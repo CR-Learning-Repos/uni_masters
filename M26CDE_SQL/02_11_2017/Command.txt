@@ -1,0 +1,10 @@
+start H:\M26CDE_SQL\RemoveTables.sql
+start H:\M26CDE_SQL\AircraftData.sql
+start H:\M26CDE_SQL\AirportData.sql
+start H:\M26CDE_SQL\FaresData.sql
+start H:\M26CDE_SQL\RouteData.sql
+start H:\M26CDE_SQL\PassengerData.sql
+start H:\M26CDE_SQL\FlightData.sql
+start H:\M26CDE_SQL\TariffData.sql
+start H:\M26CDE_SQL\TicketData.sql
+start H:\M26CDE_SQL\ItineraryData.sql

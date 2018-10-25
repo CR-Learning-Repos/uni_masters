@@ -1,0 +1,31 @@
+
+Identify and discuss an appropriate set of software engineering goals and principles that are appropriate for the development of a modern software system with your reasons.
+
+Goals of the software
+ 	modifiability -
+	efficiency -
+	reliability - Test driven development
+	understandability - 
+	re-usability -
+
+Principles
+	modularity - independent parts, "Modularity is not . . . simply the arbitrary division of a large program into smaller parts or modules.
+	abstraction - The essence of abstraction is to extract essential properties while omitting inessential details
+	hiding - The purpose ofhiding is similar to that of abstraction in that it requires making visible only those properties of a module needed to interface with other modules.
+	localization - The principle of localization is concerned with physical proximity. Things must be brought together all in one place. Thus, localization deals with physical interfaces, textual sequence, memory, etc
+	uniformity - the lack of inconsistencies and unnecessary differences
+ 	completeness - The purpose of this principle is to ensure that all the essentials of an abstraction, for example, are explicit and that nothing essential has been omitted
+	confirmability -   Confirmability is a principle that directs attention to methods for finding out whether stated goals have been achieved.
+
+fundamental process.
+ 	(1) crystallize a purpose or objective; - define
+	(2) formulate a concept for how the purpose can be achieved; - design
+	(3) devise a mechanism that implements the conceptual structure; - execute
+	(4) introduce a notation for expressing the capabilities of the mechanism and invoking its use; 
+	(5) describe the usage of the notation in a specific problem context to invoke the mechanism so the purpose isachieved. 
+
+software development activities
+	Determine requirements
+	Specify implementation
+	Code/debug
+	Tuning
