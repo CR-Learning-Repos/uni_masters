@@ -1,3 +1,5 @@
+package m19com.assignment1;
+
 import java.util.*;
 
 /**

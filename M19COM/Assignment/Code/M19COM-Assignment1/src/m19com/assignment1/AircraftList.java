@@ -1,8 +1,5 @@
-/**
- * Interface for a class representing a list of aircraft *** DO NOT MODIFY ***
- * @author Hong Guo
- * @version 1.3 - 1/10/18
- */
+package m19com.assignment1;
+
 public interface AircraftList
 {
     /**

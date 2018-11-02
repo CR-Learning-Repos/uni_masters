@@ -1,10 +1,13 @@
-/**
+/*
  * Class to represent individual aircraft *** DO NOT MODIFY ***
  * @author Hong Guo
  * @version 1.3 - 1/10/18
  */
+package m19com.assignment1;
+
 public class Aircraft implements Comparable<Aircraft>
 {
+    
     private String name;
     private String type;
     private int flightsNo;
@@ -23,7 +26,7 @@ public class Aircraft implements Comparable<Aircraft>
     
     
     /**
-     * Get the aircraft's name
+     * Get the aircrafts name
      * @return  the name string
      */
     public String getName()
@@ -63,7 +66,7 @@ public class Aircraft implements Comparable<Aircraft>
 
     
     /**
-     * Set the aircraft's number flights
+     * Set the aircrafts number flights
      */
     public void setFlights(int flights)
     {
@@ -95,7 +98,7 @@ public class Aircraft implements Comparable<Aircraft>
     
     
     /**
-     * Create a string with the aircraft's registration, type and number of flights
+     * Create a string with the aircrafts registration, type and number of flights
      * concatenated in that order, separated by colons ':'
      * @return  a printable string as above 
      */
