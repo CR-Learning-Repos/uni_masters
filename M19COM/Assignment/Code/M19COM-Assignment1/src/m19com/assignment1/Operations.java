@@ -25,6 +25,9 @@ public class Operations implements AircraftList {
      * @return true if successful, else false throws NullPointerException if
      * aircraft is null
      */
+    
+    public ArrayList<Aircraft> toList(){return _airCraftList;}
+    
     public boolean add(Aircraft aircraft) throws NullPointerException {
         if (!this.Excisits(aircraft.getReg())) {
             _airCraftList.add(aircraft);
@@ -103,7 +106,7 @@ public class Operations implements AircraftList {
      * Sort the list of aircraft into ascending order by registration
      */
     public void sort() {        
-       this._airCraftList.sort(Comparator.comparing((name) -> name.getReg()));
+       this._airCraftList.sort(Comparator.comparing((item) -> item.getFlights()));
     }
     // POST: the list of aircraft are sorted in ascending order by registration
 

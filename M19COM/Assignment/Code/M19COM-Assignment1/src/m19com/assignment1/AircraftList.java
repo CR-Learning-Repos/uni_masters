@@ -1,13 +1,17 @@
 package m19com.assignment1;
 
+import java.util.ArrayList;
+
 public interface AircraftList
 {
+    
+    public ArrayList<Aircraft> toList();
     /**
      * Add a new aircraft to the list, if not already there
      * @param aircraft  the aircraft to add
      * @return  true if successful, else false
      * throws NullPointerException if aircraft is null
-     */
+     */       
     public boolean add(Aircraft aircraft) throws NullPointerException;
     // POST: if aircraft is null the exception is thrown; else
     // the aircraft is added to our list and true is returned,

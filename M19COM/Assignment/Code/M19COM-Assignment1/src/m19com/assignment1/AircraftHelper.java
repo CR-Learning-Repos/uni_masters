@@ -10,11 +10,11 @@ import java.util.*;
 public class AircraftHelper
 {   
 	 // used in registrations
-    private int regNumber = 100;  
+    private static int regNumber = 100;  
           
     
     // Generate a aircraft with random type & number of flights and unique registration
-    public Aircraft genAircraft()
+    public static Aircraft genAircraft()
     {   
         List<String> names = Arrays.asList("Antonov_An-140", "Boeing_777-300ER", "Boeing_737-800", "Canadair_CL600-2C10",
             "Airbus_A380-800", "Dornier_Do_27", "Douglas_DC-8", "Boeing_747-8", "Embraer_190", "Embraer_175", "Convair_CV-880",
@@ -31,7 +31,7 @@ public class AircraftHelper
     }
     
 
-    private char genLetter()
+    private static char genLetter()
     {
         return (char)('A' + (int)(26*Math.random()));
     }    
