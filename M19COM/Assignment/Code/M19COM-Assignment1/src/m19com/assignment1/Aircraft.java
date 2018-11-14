@@ -9,7 +9,7 @@ public class Aircraft implements Comparable<Aircraft>
 {
     
     private String name;
-    private String type;
+    protected String type;
     private int flightsNo;
     private String registration;  // unique Registration
     
