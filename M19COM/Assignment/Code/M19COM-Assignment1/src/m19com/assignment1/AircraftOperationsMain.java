@@ -31,6 +31,8 @@ public class AircraftOperationsMain {
         // testing goes here...
         AircraftList operationsList = new Operations();
         Aircraft aircraft = aircraftList.get(0);
+        
+        
         //Testing add()
         System.out.println("\n** Testing add method");
         boolean result = operationsList.add(aircraft);
@@ -43,6 +45,7 @@ public class AircraftOperationsMain {
         } catch (Exception e) {
             PrintTestResultException("Add null, throws exception Passed", e);
         }
+        
         //Testing get
         System.out.println("\n** Testing get method");
         Aircraft testAircraft = operationsList.get(aircraft.getReg());
@@ -56,6 +59,7 @@ public class AircraftOperationsMain {
         } catch (Exception e) {
             PrintTestResultException("Get aircraft, throws exception Passed", e);
         }
+        
         //Testing remove()
         System.out.println("\n** Testing remove method");
         result = operationsList.remove(aircraft.getReg());
@@ -69,6 +73,7 @@ public class AircraftOperationsMain {
             PrintTestResultException("Remove aircraft, throws exception Passed", e);
         }
         System.out.println("\n** Finish testing aircraftlist methods");
+        
         // Test implemented AircraftList method sort()               
         System.out.print("\n** Begin testing sort method");
         // testing goes here...
