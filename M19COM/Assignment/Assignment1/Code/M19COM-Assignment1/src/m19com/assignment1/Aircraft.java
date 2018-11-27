@@ -5,16 +5,23 @@
  */
 package m19com.assignment1;
 
+/**
+ *
+ * @author rollingc
+ */
 public class Aircraft implements Comparable<Aircraft>
 {
     
     private String name;
-    protected String type;
+    private String type;
     private int flightsNo;
     private String registration;  // unique Registration
     
     /**
      * Constructor
+     * @param name
+     * @param flights
+     * @param reg
      */
     public Aircraft(String name, int flights, String reg)
     {
@@ -67,6 +74,7 @@ public class Aircraft implements Comparable<Aircraft>
     
     /**
      * Set the aircrafts number flights
+     * @param flights
      */
     public void setFlights(int flights)
     {

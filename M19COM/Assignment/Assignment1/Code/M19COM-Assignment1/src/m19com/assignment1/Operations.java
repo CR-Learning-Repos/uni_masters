@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Implementation of ArrayList interface for type Aircraft
+ * @author Chris Rollings
+ * @version 1.0 - 8/11/2018
  */
 package m19com.assignment1;
 
@@ -18,10 +18,6 @@ public class Operations implements AircraftList {
 
     private ArrayList<Aircraft> _airCraftList = new ArrayList<Aircraft>();
 
-    public ArrayList<Aircraft> toList() {
-        return _airCraftList;
-    }
-
     /**
      * Add a new aircraft to the list, if not already there
      *
@@ -31,7 +27,7 @@ public class Operations implements AircraftList {
      */
     public boolean add(Aircraft aircraft) throws NullPointerException {
         if (aircraft == null) {
-            throw new NullPointerException();
+            throw new NullPointerException("");
         }
         if (!this.Excisits(aircraft)) {
             _airCraftList.add(aircraft);
@@ -51,11 +47,13 @@ public class Operations implements AircraftList {
      * @return true if successful, else false
      * @throws NullPointerException if registration is null
      */
-    public boolean remove(String registration) throws NullPointerException {
+    public boolean remove(String registration) throws NullPointerException 
+    {
         if (registration == null) {
             throw new NullPointerException();
         }
         Aircraft aircraft = this.get(registration);
+
         if (aircraft != null) {
             _airCraftList.remove(aircraft);
             return true;
@@ -125,14 +123,19 @@ public class Operations implements AircraftList {
     }
     // POST: the list of aircraft are sorted in ascending order by registration
 
-        /**
+    /**
      * Check aircraft excisits
      *
-     * @param registration the registration of the aircraft to remove
+     * @param aircraft to find
      * @return true if successful, else false
-     * @throws NullPointerException if registration is null
+     * @throws NullPointerException if aircraft is null
      */
     private boolean Excisits(Aircraft aircraft) {
+
+        if (aircraft == null) {
+            throw new NullPointerException("Aircraft cannot be found");
+        }
+
         for (Aircraft item : this._airCraftList) {
             if (item.getReg() == aircraft.getReg()) {
                 return true;
