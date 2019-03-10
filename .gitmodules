@@ -1,0 +1,3 @@
+[submodule "M32COM/groupH_M32COM"]
+	path = M32COM/groupH_M32COM
+	url = https://github.coventry.ac.uk/rollingc/groupH_M32COM.git
