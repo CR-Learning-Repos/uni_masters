@@ -3,6 +3,9 @@
     Created on : Feb 25, 2013, 11:15:44 AM
     Author     : nazaraf
 --%>
+
+
+
 <%@ page session="true" import="java.util.*, book.Book" %>
 <%
  ArrayList  list = (ArrayList) session.getAttribute("shoppingcart");

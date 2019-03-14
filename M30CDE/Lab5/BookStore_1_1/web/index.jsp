@@ -16,9 +16,9 @@
  <form name="shoppingForm"  action="BookServlet"  method="POST">
  <b>Book:</b> 
  <select name=book>
-  <option value="0"> Java | David Bell | 5.50</option>
-  <option value="1"> Visual Basic | Tony Butcher  | 10.15</option>
-  <option value="2"> C Programming | Simon Locus | 6.95</option>
+  <option> Java | David Bell | 5.50</option>
+  <option> Visual Basic | Tony Butcher  | 10.15</option>
+  <option> C Programming | Simon Locus | 6.95</option>
   
  </select>
  <b>Quantity: </b><input type="text" name="qty" SIZE="3" value=1>
