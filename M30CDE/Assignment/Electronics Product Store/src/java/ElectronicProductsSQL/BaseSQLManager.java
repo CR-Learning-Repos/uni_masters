@@ -14,13 +14,11 @@ public class BaseSQLManager {
     protected String URL;
     protected String USERNAME;
     protected String PASSWORD;
-    protected String TABLENAME;
 
     BaseSQLManager() {
         this.URL = "jdbc:derby://localhost:1527/ElectronicProduct";
         this.USERNAME = "chris";
         this.PASSWORD = "1234";
-        this.TABLENAME = "PRODUCTS";
     }
 
 }
