@@ -13,7 +13,7 @@
     Connection con = null;
     Statement st = null;
     ResultSet rs = null;
-    String url = "jdbc:derby://localhost:1527/OpenSystemsDB";
+    String url = "jdbc:derby://localhost:1527/ElectronicProduct";
     String user = "chris";
     String pswd = "1234";
     try {
@@ -38,49 +38,55 @@
         st.close();
         con.close();
     }
-    
+
 
 %>
-<%! 
-    void AddROW(){
-        EMPLOYEESQLManager sql = new EMPLOYEESQLManager(); 
-        
-        sql.InsertROWN()
+<%!
+    void AddROW() {
+        Connection con = null;
+        Statement st = null;
+        ResultSet rs = null;
+        String url = "jdbc:derby://localhost:1527/ElectronicProduct";
+        String user = "chris";
+        String pswd = "1234";
+        EMPLOYEESQLManager sql = new EMPLOYEESQLManager(url, user, pswd);
+
+        //sql.INSERTROW(1,"","","","")
     }
 %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="java.util.*, EMPLOYEESQLManager%>
+        <!DOCTYPE html>
+        <html>
+        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-    </head>
-    <body>        
-        <TABLE BORDER="1">
-            <TR>
-                <TH>ID</TH>
-                <TH>Name</TH>
-                <TH>LASTNAME</TH>
-                <TH>SALARY</TH>
-                <TH>STARTDATE</TH>
-            </TR>
-            <% while (rs.next()) {%>
+</head>
+<body>        
+    <TABLE BORDER="1">
+        <TR>
+            <TH>ID</TH>
+            <TH>Name</TH>
+            <TH>LASTNAME</TH>
+            <TH>SALARY</TH>
+            <TH>STARTDATE</TH>
+        </TR>
+    <% while (rs.next()) {%>
             <TR>
                 <TD> <%= rs.getString(1)%></td>
-                <TD> <%= rs.getString(2)%></td>
-                <TD> <%= rs.getString(3)%></TD>
-                <TD> <%= rs.getString(4)%></TD>
-                <TD> <%= rs.getString(5)%></TD>
+            <TD> <%= rs.getString(2)%></td>
+            <TD> <%= rs.getString(3)%></TD>
+            <TD> <%= rs.getString(4)%></TD>
+            <TD> <%= rs.getString(5)%></TD>
             </TR>
-            <% }%>
-        </TABLE>
-        
-        <FORM METHOD=POST ACTION="SQLJsp.jsp" onsubmit="<%= AddROW()%>">
-             <INPUT TYPE=TEXT NAME=id SIZE=20>
-             <INPUT TYPE=TEXT NAME=name SIZE=20>
-             <INPUT TYPE=TEXT NAME=lastName SIZE=20>
-             <INPUT TYPE=TEXT NAME=salary SIZE=20>
-             <INPUT TYPE=TEXT NAME=date SIZE=20>
-             <INPUT TYPE=SUBMIT>
-    </body>
-</html>
+    <% }%>
+    </TABLE>
+
+    <FORM METHOD=POST ACTION="SQLJsp.jsp" onsubmit="<%= AddROW()%>">
+            <INPUT TYPE=TEXT NAME=id SIZE=20>
+            <INPUT TYPE=TEXT NAME=name SIZE=20>
+            <INPUT TYPE=TEXT NAME=lastName SIZE=20>
+            <INPUT TYPE=TEXT NAME=salary SIZE=20>
+            <INPUT TYPE=TEXT NAME=date SIZE=20>
+            <INPUT TYPE=SUBMIT>
+            </body>
+            </html>

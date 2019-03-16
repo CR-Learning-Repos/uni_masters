@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ChrisRollings
  */
-@WebServlet(urlPatterns = {"/GetCustomerInfo"})
-public class GetCustomerInfo extends HttpServlet {
+@WebServlet(urlPatterns = {"/Products"})
+public class Products extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,10 @@ public class GetCustomerInfo extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GetCustomerInfo</title>");            
+            out.println("<title>Servlet Products</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet GetCustomerInfo at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Products at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
