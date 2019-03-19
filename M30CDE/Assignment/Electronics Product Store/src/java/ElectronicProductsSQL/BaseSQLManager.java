@@ -20,5 +20,4 @@ public class BaseSQLManager {
         this.USERNAME = "chris";
         this.PASSWORD = "1234";
     }
-
 }
