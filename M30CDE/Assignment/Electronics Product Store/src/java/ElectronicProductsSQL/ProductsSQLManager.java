@@ -50,7 +50,7 @@ public class ProductsSQLManager extends BaseSQLManager {
     public boolean INSERTROW(int id, int price, String desc) throws SQLException {
 
         Connection con = null;
-        PrepareStatement st = null;
+        PreparedStatement  st = null;
         ResultSet rs = null;
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
