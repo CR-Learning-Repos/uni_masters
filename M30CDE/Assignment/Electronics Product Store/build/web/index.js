@@ -4,4 +4,4 @@
  * and open the template in the editor.
  */
 
-alert("Hello")
+//alert("Hello")
