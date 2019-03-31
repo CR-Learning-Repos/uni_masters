@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+        <link href="site.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body>               
+       <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProductEmpty}" rendered="#{productController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{productController.items.rowCount > 0}">
+                    <h:outputText value="#{productController.pagination.pageFirstItem + 1}..#{productController.pagination.pageLastItem + 1}/#{productController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{productController.previous}" value="#{bundle.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{productController.next}" value="#{bundle.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{productController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductTitle_price}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.price}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductTitle_description}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.description}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProductTitle_productName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productName}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{productController.prepareView}" value="#{bundle.ListProductViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{productController.prepareEdit}" value="#{bundle.ListProductEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{productController.destroy}" value="#{bundle.ListProductDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{productController.prepareCreate}" value="#{bundle.ListProductCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProductIndexLink}"/>
+            </h:form>
+        
+        
+        
+        <br />
+        <h:link outcome="/category/List" value="Show All Category Items"/>
+        <br />
+        <h:link outcome="/customer/List" value="Show All Customer Items"/>
+        <br />
+        <h:link outcome="/customerOrder/List" value="Show All CustomerOrder Items"/>
+        <br />
+        <h:link outcome="/product/List" value="Show All Product Items"/>
+        <br />
+        <h:link outcome="/purchase/List" value="Show All Purchase Items"/>
+    </h:body>
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
+
