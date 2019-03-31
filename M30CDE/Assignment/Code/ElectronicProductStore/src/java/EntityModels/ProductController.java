@@ -74,7 +74,7 @@ public class ProductController implements Serializable {
     public String prepareCreate() {
         current = new Product();
         selectedItemIndex = -1;
-        return "Create";
+        return "/product/Create";
     }
 
     public String create() {
