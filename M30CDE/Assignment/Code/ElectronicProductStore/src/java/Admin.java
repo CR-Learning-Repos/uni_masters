@@ -20,10 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author Chris
  */
 
-@WebServlet(urlPatterns = {"/Admin"})
+@WebServlet(name = "AdminServlet", urlPatterns = {"/admin"})
 
-//@ServletSecurity(
-//@HttpConstraint(transportGuarantee = TransportGuarantee.NONE,rolesAllowed = {"CanEditProductList","CanViewOrders"}))
+@ServletSecurity(
+@HttpConstraint(transportGuarantee = TransportGuarantee.CONFIDENTIAL,rolesAllowed = {"CanEditProductList","CanViewOrders"}))
 public class Admin extends HttpServlet {
 
     /**
