@@ -24,24 +24,32 @@ public class CustomerOrder implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne(targetEntity = Customer.class)
-    private Customer customer;
     private Date dateOfOrder;
+    private Long total;
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+    public Long getTotal() {
+        return total;
+    }
+    private String address;
+    private String city;
+    private String expMonth;
+    private String state;
+    private String zip;
+    private String expYear;
+    private String cvv;
+    private String firstName;
+    private String email;
 
     // <editor-fold desc="Properties"> 
     public Date getDateOfOrder() {
         return this.dateOfOrder;
     }
+
     public void setDateOfOrder(Date date) {
         this.dateOfOrder = date;
-    }
-
-    public Customer getCustomer() {
-        return this.customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 
     public Long getId() {
@@ -79,5 +87,96 @@ public class CustomerOrder implements Serializable {
         return "EntityModels.Order[ id=" + id + " ]";
     }
     // </editor-fold>
+
+    private String nameOnCard;
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getExpMonth() {
+        return expMonth;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public String getExpYear() {
+        return expYear;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    private String creditCardNumber;
+
+    public void setNameOnCard(String nameOnCard) {
+        this.nameOnCard = nameOnCard;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setExpMonth(String expMonth) {
+        this.expMonth = expMonth;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setExpYear(String expYear) {
+        this.expYear = expYear;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }

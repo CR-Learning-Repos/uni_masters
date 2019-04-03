@@ -7,6 +7,7 @@ package EntityModels;
  */
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -27,9 +29,12 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToMany(targetEntity = Category.class)
-    private Set categories;
+    private Set<Category> categories;
+    @NotNull
     private int price;
+    @NotNull
     private String description;
+    @NotNull
     private String productName;
   
     // <editor-fold desc="Properties"> 
@@ -66,11 +71,14 @@ public class Product implements Serializable {
         this.productName = name;
     }
 
-    public Set getCategories() {
+    public Set<Category> getCategories() {
+        if(categories == null){
+            this.categories = new HashSet<Category>();
+        }
         return this.categories;
     }
 
-    public void setCategories(Set cat) {
+    public void setCategories(Set<Category> cat) {
         this.categories = cat;
     }
 

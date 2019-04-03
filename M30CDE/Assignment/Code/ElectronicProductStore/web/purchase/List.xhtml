@@ -51,10 +51,8 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{purchaseController.prepareCreate}" value="#{bundle.ListPurchaseCreateLink}"/>
                 <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListPurchaseIndexLink}"/>
+                <h:link class="btn btn-warning" outcome="/admin/admin" value="#{bundle.ListCustomerOrderIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -4,7 +4,11 @@ import EntityModels.util.JsfUtil;
 import EntityModels.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -28,6 +32,15 @@ public class CategoryController implements Serializable {
     private int selectedItemIndex;
 
     public CategoryController() {
+    }
+
+    public Set<Category> getCategories() {
+        List<Category> list = (List<Category>) getItems().getWrappedData();
+        Set<Category> set = new HashSet<Category>();
+        for (Category x : list) {
+            set.add(x);
+        }
+        return new HashSet<Category>(set);
     }
 
     public Category getSelected() {

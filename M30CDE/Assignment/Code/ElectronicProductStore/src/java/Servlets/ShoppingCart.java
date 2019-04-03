@@ -3,28 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.HttpConstraint;
-import javax.servlet.annotation.ServletSecurity;
-import javax.servlet.annotation.ServletSecurity.TransportGuarantee;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Chris
  */
-
-@WebServlet(name = "AdminServlet", urlPatterns = {"/admin"})
-
-@ServletSecurity(
-@HttpConstraint(transportGuarantee = TransportGuarantee.CONFIDENTIAL,rolesAllowed = {"CanEditProductList","CanViewOrders"}))
-public class Admin extends HttpServlet {
+@WebServlet(name = "ShoppingCart", urlPatterns = {"/ShoppingCart"})
+public class ShoppingCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,8 +35,35 @@ public class Admin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String contextPath = request.getContextPath();
-        response.sendRedirect(contextPath + "/faces/product/Create.xhtml");
+        PrintWriter out = response.getWriter();
+        System.out.println(" Request Processing ... ");
+
+        HttpSession session = request.getSession(true);
+        if (session == null) {
+            response.sendRedirect("http://localhost:8080/error.html");
+        }
+        ArrayList list = (ArrayList) session.getAttribute("shoppingcart");
+        String action = request.getParameter("action").trim();
+
+        if (action.equals("ADD")) 
+        {
+            session.setAttribute("shoppingcart", list);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
+        } //if add
+        else if (action.equals("DELETE")) {
+            session.setAttribute("shoppingcart", list);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+            dispatcher.forward(request, response);
+        } else if (action.equals("CHECKOUT")) {
+            float total = 0;
+            for (int i = 0; i < list.size(); i++) {
+
+            }
+            request.setAttribute("amount", String.valueOf(total));
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Checkout.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -10,29 +10,31 @@
             <h:outputText value="#{bundle.EditProductTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
+          <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditProductLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{productController.selected.id}" title="#{bundle.EditProductTitle_id}" />
-                    <h:outputLabel value="#{bundle.EditProductLabel_price}" for="price" />
-                    <h:inputText id="price" value="#{productController.selected.price}" title="#{bundle.EditProductTitle_price}" />
-                    <h:outputLabel value="#{bundle.EditProductLabel_description}" for="description" />
-                    <h:inputText id="description" value="#{productController.selected.description}" title="#{bundle.EditProductTitle_description}" />
-                    <h:outputLabel value="#{bundle.EditProductLabel_productName}" for="productName" />
-                    <h:inputText id="productName" value="#{productController.selected.productName}" title="#{bundle.EditProductTitle_productName}" />
+                    <h:outputLabel value="#{bundle.CreateProductLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{productController.selected.price}" title="#{bundle.CreateProductTitle_price}" />
+                    <h:outputLabel value="#{bundle.CreateProductLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{productController.selected.description}" title="#{bundle.CreateProductTitle_description}" />
+                    <h:outputLabel value="#{bundle.CreateProductLabel_productName}" for="productName" />
+                    <h:inputText id="productName" value="#{productController.selected.productName}" title="#{bundle.CreateProductTitle_productName}" />
+                    <h:outputLabel value="Select categries: " for="category" />
+                    <div>
+                        <h:selectManyCheckbox value="#{productController.categories}">
+                            <f:selectItems value="#{categoryController.categories}" var="n"
+                                           itemLabel="#{n.name}" itemValue="#{n.id}" />
+                        </h:selectManyCheckbox>                  
+                    </div>
                 </h:panelGrid>
-                <h:commandLink action="#{productController.update}" value="#{bundle.EditProductSaveLink}"/>
+                <br />
+                <h:commandLink class="btn btn-success" action="#{productController.update}" value="#{bundle.CreateProductSaveLink}" />
                 <br />
                 <br />
-                <h:link outcome="View" value="#{bundle.EditProductViewLink}"/>
+                <h:commandLink class="btn btn-warning"  action="#{productController.prepareList}" value="#{bundle.CreateProductShowAllLink}" immediate="true"/>
                 <br />
-                <h:commandLink action="#{productController.prepareList}" value="#{bundle.EditProductShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditProductIndexLink}" />
             </h:form>
         </ui:define>
     </ui:composition>

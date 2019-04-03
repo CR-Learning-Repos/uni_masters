@@ -22,21 +22,21 @@
                     <h:dataTable value="#{customerOrderController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerOrderTitle_dateOfOrder}"/>
+                                <h:outputText value="Name"/>
                             </f:facet>
-                            <h:outputText value="#{item.dateOfOrder}"/>
+                            <h:outputText value="#{item.firstName}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerOrderTitle_customer}"/>
+                                <h:outputText value="Address"/>
                             </f:facet>
-                            <h:outputText value="#{item.customer}"/>
+                            <h:outputText value="#{item.address}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerOrderTitle_id}"/>
+                                <h:outputText value="Date of purchase"/>
                             </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:outputText value="#{item.dateOfOrder.toString()}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -51,12 +51,9 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{customerOrderController.prepareCreate}" value="#{bundle.ListCustomerOrderCreateLink}"/>
                 <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListCustomerOrderIndexLink}"/>
+                <h:link class="btn btn-success"  outcome="/admin/admin" value="#{bundle.ListCustomerOrderIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
-
 </html>

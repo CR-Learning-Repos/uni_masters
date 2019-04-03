@@ -4,7 +4,13 @@ import EntityModels.util.JsfUtil;
 import EntityModels.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -15,6 +21,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 @Named("productController")
 @SessionScoped
@@ -26,6 +33,7 @@ public class ProductController implements Serializable {
     private EntityModels.ProductFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private List<String> categories;
 
     public ProductController() {
     }
@@ -38,9 +46,19 @@ public class ProductController implements Serializable {
         return current;
     }
 
+    public List<String> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<String> cats) {
+        categories = cats;
+    }
+
     private ProductFacade getFacade() {
         return ejbFacade;
     }
+
+
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
@@ -67,6 +85,12 @@ public class ProductController implements Serializable {
 
     public String prepareView() {
         current = (Product) getItems().getRowData();
+        this.categories = new ArrayList<String>();
+
+        current.getCategories().stream().forEach(x -> {
+            this.categories.add(x.getId().toString());
+        });
+
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -76,9 +100,34 @@ public class ProductController implements Serializable {
         selectedItemIndex = -1;
         return "/product/Create";
     }
+    @EJB
+    private EntityModels.CategoryFacade catEjbFacade;
+
+    public List<Category> getCategoriesTodisplay() {
+        List<Category> cats = new ArrayList<Category>();
+        for (int i = 0; i < categories.size(); i++) {
+            Long id = Long.parseLong(categories.get(i));
+            Category cat = (Category) catEjbFacade.find(id);
+            cats.add(cat);
+        }
+
+        return cats;
+    }
 
     public String create() {
         try {
+
+            List<Category> cats = new ArrayList<Category>();
+            for (int i = 0; i < categories.size(); i++) {
+                Long id = Long.parseLong(categories.get(i));
+                Category cat = (Category) catEjbFacade.find(id);
+                cats.add(cat);
+            }
+
+            Set<Category> set = new HashSet<Category>(cats);
+
+            current.setCategories(set);
+
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ProductCreated"));
             return prepareCreate();
@@ -90,12 +139,27 @@ public class ProductController implements Serializable {
 
     public String prepareEdit() {
         current = (Product) getItems().getRowData();
+        this.categories = new ArrayList<String>();
+
+        current.getCategories().stream().forEach(x -> {
+            this.categories.add(x.getId().toString());
+        });
+        current = (Product) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
 
     public String update() {
         try {
+            List<Category> cats = new ArrayList<Category>();
+            for (int i = 0; i < categories.size(); i++) {
+                Long id = Long.parseLong(categories.get(i));
+                Category cat = (Category) catEjbFacade.find(id);
+                cats.add(cat);
+            }
+            Set<Category> set = new HashSet<Category>(cats);
+
+            current.setCategories(set);
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ProductUpdated"));
             return "View";

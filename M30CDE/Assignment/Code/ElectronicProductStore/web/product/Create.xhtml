@@ -15,23 +15,30 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateProductLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{productController.selected.id}" title="#{bundle.CreateProductTitle_id}" />
                     <h:outputLabel value="#{bundle.CreateProductLabel_price}" for="price" />
-                    <h:inputText id="price" value="#{productController.selected.price}" title="#{bundle.CreateProductTitle_price}" />
-                    <h:outputLabel value="#{bundle.CreateProductLabel_description}" for="description" />
-                    <h:inputText id="description" value="#{productController.selected.description}" title="#{bundle.CreateProductTitle_description}" />
+                    <h:inputText requiredMessage="Price is mandatory"  required="true" maxlength="10" id="price" value="#{productController.selected.price}" title="#{bundle.CreateProductTitle_price}" > 
+                        <f:validateDoubleRange ></f:validateDoubleRange>
+                    </h:inputText>
+                    <h:outputLabel  value="#{bundle.CreateProductLabel_description}" for="description">
+                    </h:outputLabel>
+                    <h:inputText  requiredMessage="Description is mandatory " required="true" maxlength="10" id="description" value="#{productController.selected.description}" title="#{bundle.CreateProductTitle_description}" />
                     <h:outputLabel value="#{bundle.CreateProductLabel_productName}" for="productName" />
-                    <h:inputText id="productName" value="#{productController.selected.productName}" title="#{bundle.CreateProductTitle_productName}" />
+                    <h:inputText requiredMessage="Product Name is mandatory " required="true" maxlength="10" id="productName" value="#{productController.selected.productName}" title="#{bundle.CreateProductTitle_productName}">
+                    </h:inputText>
+                    <h:outputLabel value="Select categries: " for="category" />
+                    <div>
+                        <h:selectManyCheckbox value="#{productController.categories}">
+                            <f:selectItems value="#{categoryController.categories}" var="n"
+                                           itemLabel="#{n.name}" itemValue="#{n.id}" />
+                        </h:selectManyCheckbox>                  
+                    </div>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{productController.create}" value="#{bundle.CreateProductSaveLink}" />
+                <h:commandLink class="btn btn-success" action="#{productController.create}" value="#{bundle.CreateProductSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{productController.prepareList}" value="#{bundle.CreateProductShowAllLink}" immediate="true"/>
+                <h:commandLink class="btn btn-warning"  action="#{productController.prepareList}" value="#{bundle.CreateProductShowAllLink}" immediate="true"/>
                 <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateProductIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -4,6 +4,12 @@ import EntityModels.util.JsfUtil;
 import EntityModels.util.PaginationHelper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -15,10 +21,182 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 @Named("customerOrderController")
 @SessionScoped
 public class CustomerOrderController implements Serializable {
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setNameOnCard(String nameOnCard) {
+        this.nameOnCard = nameOnCard;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setExpMonth(String expMonth) {
+        this.expMonth = expMonth;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public void setExpYear(String expYear) {
+        this.expYear = expYear;
+    }
+
+    public void setCvv(String cvv) {
+        this.cvv = cvv;
+    }
+
+    public void setCurrent(CustomerOrder current) {
+        this.current = current;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getExpMonth() {
+        return expMonth;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public String getExpYear() {
+        return expYear;
+    }
+
+    public String getCvv() {
+        return cvv;
+    }
+
+    public CustomerOrder getCurrent() {
+        return current;
+    }
+
+    private String firstName;
+    private String email;
+
+    public void setItems(DataModel items) {
+        this.items = items;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    @EJB
+    private EntityModels.PurchaseFacade purchaseejbFacade;
+    @EJB
+    private EntityModels.ProductFacade productejbFacade;
+
+    public Long getTotal() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        Map<Long, Long> list = (HashMap<Long, Long>) session.getAttribute("shoppingcart");
+        Long totalPounds = 0l;
+        for (Map.Entry<Long, Long> entry : list.entrySet()) {
+            Long key = entry.getKey();
+            Product prod = productejbFacade.find(key);
+            totalPounds = totalPounds + prod.getPrice();
+        }
+        return totalPounds;
+    }
+
+    public String Submit() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        Map<Long, Long> list = (HashMap<Long, Long>) session.getAttribute("shoppingcart");
+
+        List<Product> products = new ArrayList<Product>();
+        Long totalPounds = 0l;
+        for (Map.Entry<Long, Long> entry : list.entrySet()) {
+            Long key = entry.getKey();
+            Product prod = productejbFacade.find(key);
+            products.add(prod);
+            totalPounds = totalPounds + prod.getPrice();
+        }
+
+        CustomerOrder order = new CustomerOrder();
+        order.setFirstName(firstName);
+        order.setEmail(email);
+        order.setNameOnCard(nameOnCard);
+        order.setCreditCardNumber(creditCardNumber);
+        order.setAddress(address);
+        order.setCity(city);
+        order.setExpMonth(expMonth);
+        order.setState(state);
+        order.setZip(zip);
+        order.setExpYear(expYear);
+        order.setCvv(cvv);
+        order.setTotal(totalPounds);
+        Date todaysDate = new Date();
+        order.setDateOfOrder(todaysDate);
+        try {
+            ejbFacade.create(order);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CustomerOrderCreated"));
+            Purchase purchase = new Purchase();
+            purchase.setOrder(order);
+            purchase.setProductSet(new HashSet<Product>(products));
+            purchaseejbFacade.create(purchase);
+            return "/customerOrder/OrderConfirmation";
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return "/customerOrder/OrderDenied";
+        }
+    }
+
+    private String nameOnCard;
+    private String creditCardNumber;
+    private String address;
+    private String city;
+    private String expMonth;
+    private String state;
+    private String zip;
+    private String expYear;
+    private String cvv;
 
     private CustomerOrder current;
     private DataModel items = null;

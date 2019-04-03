@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Place Order"></h:outputText>
+
+        </ui:define>
+        <ui:define name="body">
+            <h:form>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Billing Address</h3>
+                                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>                                    
+                                    <h:inputText a:placeholder="John M. Doe" value="#{customerOrderController.firstName}"></h:inputText>
+                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                    <h:inputText a:placeholder="john@example.com" value="#{customerOrderController.email}"></h:inputText>
+                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                                    <h:inputText a:placeholder="542 W. 15th Street" value="#{customerOrderController.address}"></h:inputText>
+                                    <label for="city"><i class="fa fa-institution"></i> City</label>
+                                    <h:inputText a:placeholder="New York" value="#{customerOrderController.city}"></h:inputText>
+                                    <div class="row">
+                                        <div class="col-50">
+                                            <label for="state">State</label>
+                                            <h:inputText a:placeholder="NY" value="#{customerOrderController.state}"></h:inputText>
+                                        </div>
+                                        <div class="col-50">
+                                            <label for="zip">Zip</label>
+                                            <h:inputText a:placeholder="10001" value="#{customerOrderController.zip}"></h:inputText>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <h3>Payment</h3>
+                                    <label for="fname">Accepted Cards</label>
+                                    <div class="icon-container">
+                                        <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                        <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                        <i class="fa fa-cc-discover" style="color:orange;"></i>
+                                    </div>
+                                    <label for="cname">Name on Card</label>
+                                    <h:inputText a:placeholder="John More Doe" value="#{customerOrderController.nameOnCard}"></h:inputText>
+                                    <label for="ccnum">Credit card number</label>
+                                    <h:inputText a:placeholder="John More Doe" value="#{customerOrderController.creditCardNumber}"></h:inputText>
+                                    <label for="expmonth">Exp Month</label>
+                                    <h:inputText a:placeholder="September" value="#{customerOrderController.expMonth}"></h:inputText>
+                                    <div class="row">
+                                        <div class="col-50">
+                                            <label for="expyear">Exp Year</label>
+                                            <h:inputText a:placeholder="2018" value="#{customerOrderController.expYear}"></h:inputText>
+                                        </div>
+                                        <div class="col-50">
+                                            <label for="cvv">CVV</label>
+                                            <h:inputText a:placeholder="352" value="#{customerOrderController.cvv}"></h:inputText>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h1>Shopping Cart</h1>
+                        <h:dataTable class="productlist" value="#{shoppingCart.list}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px"> >
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListProductTitle_productName}" />
+                                </f:facet>
+                                <h:outputText value="#{item.productName}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListProductTitle_description}" />
+                                </f:facet>
+                                <h:outputText value="#{item.description}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Price single" />
+                                </f:facet>
+                                <h:outputText value="#{item.price}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Price total" />
+                                </f:facet>
+                                <h:outputText value="#{shoppingCart.getTotalForItem(item.id)}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Item count" />
+                                </f:facet>
+                                <h:outputText value="#{shoppingCart.getItemCount(item.id)}" />
+                            </h:column> 
+                        </h:dataTable>
+                        <h:commandButton class="form-control btn btn-primary" value="submit" action="#{customerOrderController.Submit}" />
+                    </div>
+                </div>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

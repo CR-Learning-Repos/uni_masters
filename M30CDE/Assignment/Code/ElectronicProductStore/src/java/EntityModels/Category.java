@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -26,24 +27,34 @@ public class Category implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @NotNull
     private String description;
+    
     @ManyToMany(targetEntity = Product.class)
     private Set products;
-    private ProductCategories productType;
     
+    @NotNull
+    private String name;
+
+    public Category() {
+    }
+
     // <editor-fold desc="Properties"> 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getDescription() {
         return this.description;
     }
+
     public void setDescription(String desc) {
         this.description = desc;
-    }
-    
-    public void setProductType(ProductCategories productType) {
-        this.productType = productType;
-    }
-    public ProductCategories getProductType() {
-        return this.productType;
     }
 
     public Long getId() {

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Shopping cart"></h:outputText>
+
+        </ui:define>
+        <ui:define name="body">
+            <div class="row">
+                <div style="margin:auto;">
+
+                    <h:form styleClass="jsfcrud_list_form">
+                        <h:dataTable class="productlist" value="#{shoppingCart.list}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px"> >
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="£#{bundle.ListProductTitle_price}" />
+                                </f:facet>
+                                <h:outputText value="#{item.price}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListProductTitle_description}" />
+                                </f:facet>
+                                <h:outputText value="#{item.description}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListProductTitle_productName}" />
+                                </f:facet>
+                                <h:outputText value="#{item.productName}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Count" />
+                                </f:facet>
+                                <h:outputText value="#{shoppingCart.getItemCount(item.getId())}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Total£" />
+                                </f:facet>
+                                <h:outputText value="£#{shoppingCart.getTotalForItem(item.getId())}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;" />
+                                </f:facet>
+                                <h:commandLink class="btn btn-primary" action="#{shoppingCart.removeFromCart(item)}" value="Remove" />
+                            </h:column>
+                        </h:dataTable>
+                        <div class="form-group">
+                            <h:commandLink class="form-control btn btn-warning" action="/customerOrder/MakeOrder">Place Order</h:commandLink>
+                        </div>
+                    </h:form> 
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

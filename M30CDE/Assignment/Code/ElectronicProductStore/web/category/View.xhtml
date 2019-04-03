@@ -15,28 +15,21 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewCategoryLabel_description}"/>
-                    <h:outputText value="#{categoryController.selected.description}" title="#{bundle.ViewCategoryTitle_description}"/>
-                    <h:outputText value="#{bundle.ViewCategoryLabel_productType}"/>
-                    <h:outputText value="#{categoryController.selected.productType}" title="#{bundle.ViewCategoryTitle_productType}"/>
-                    <h:outputText value="#{bundle.ViewCategoryLabel_id}"/>
-                    <h:outputText value="#{categoryController.selected.id}" title="#{bundle.ViewCategoryTitle_id}"/>
+                    <h:outputLabel value="Name" for="name" />
+                    <h:inputText id="name" value="#{categoryController.selected.name}" title="name" />
+                    
+                    <h:outputLabel value="#{bundle.CreateCategoryLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{categoryController.selected.description}" title="#{bundle.CreateCategoryTitle_description}" />
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{categoryController.destroyAndView}" value="#{bundle.ViewCategoryDestroyLink}"/>
+                <h:commandLink class="btn btn-success" action="#{categoryController.create}" value="#{bundle.CreateCategorySaveLink}" />
                 <br />
                 <br />
-                <h:link outcome="Edit" value="#{bundle.ViewCategoryEditLink}"/>
-                <br />
-                <h:commandLink action="#{categoryController.prepareCreate}" value="#{bundle.ViewCategoryCreateLink}" />
-                <br />
-                <h:commandLink action="#{categoryController.prepareList}" value="#{bundle.ViewCategoryShowAllLink}"/>
+                <h:commandLink class="btn btn-warning" action="#{categoryController.prepareList}" value="#{bundle.CreateCategoryShowAllLink}" immediate="true"/>
                 <br />
                 <br />
-                <h:link outcome="/index" value="#{bundle.ViewCategoryIndexLink}"/>
-
+                <h:link outcome="/index" value="#{bundle.CreateCategoryIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
-
 </html>
