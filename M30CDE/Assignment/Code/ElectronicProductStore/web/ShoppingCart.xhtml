@@ -55,6 +55,12 @@
                         </div>
                     </h:form> 
                 </div>
+
+                <div>
+                    <label>Basket total:</label>
+                    <b><h:outputText value="#{shoppingCart.getCartTotal()}"></h:outputText></b>
+                </div>
+
             </div>
         </ui:define>
     </ui:composition>

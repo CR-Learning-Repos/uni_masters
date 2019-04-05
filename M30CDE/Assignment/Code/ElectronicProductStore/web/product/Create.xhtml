@@ -21,7 +21,7 @@
                     </h:inputText>
                     <h:outputLabel  value="#{bundle.CreateProductLabel_description}" for="description">
                     </h:outputLabel>
-                    <h:inputText  requiredMessage="Description is mandatory " required="true" maxlength="10" id="description" value="#{productController.selected.description}" title="#{bundle.CreateProductTitle_description}" />
+                    <h:inputText  requiredMessage="Description is mandatory " required="true" maxlength="100" id="description" value="#{productController.selected.description}" title="#{bundle.CreateProductTitle_description}" />
                     <h:outputLabel value="#{bundle.CreateProductLabel_productName}" for="productName" />
                     <h:inputText requiredMessage="Product Name is mandatory " required="true" maxlength="10" id="productName" value="#{productController.selected.productName}" title="#{bundle.CreateProductTitle_productName}">
                     </h:inputText>

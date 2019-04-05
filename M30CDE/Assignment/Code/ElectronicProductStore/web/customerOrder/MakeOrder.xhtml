@@ -100,6 +100,10 @@
                                 <h:outputText value="#{shoppingCart.getItemCount(item.id)}" />
                             </h:column> 
                         </h:dataTable>
+                        <div>
+                            <label>Basket total:</label>
+                            <b><h:outputText value="#{shoppingCart.getCartTotal()}"></h:outputText></b>
+                        </div>
                         <h:commandButton class="form-control btn btn-primary" value="submit" action="#{customerOrderController.Submit}" />
                     </div>
                 </div>

@@ -58,8 +58,6 @@ public class ProductController implements Serializable {
         return ejbFacade;
     }
 
-
-
     public PaginationHelper getPagination() {
         if (pagination == null) {
             pagination = new PaginationHelper(10) {
@@ -198,6 +196,17 @@ public class ProductController implements Serializable {
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
+    }
+
+    public List<Category> getProductCegory(Product prod) {
+
+        List returnList = new ArrayList<Category>();
+        for (Category cat : prod.getCategories()) {
+            returnList.add(cat);
+        }
+
+        
+        return returnList;
     }
 
     private void updateCurrentItem() {

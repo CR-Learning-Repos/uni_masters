@@ -21,7 +21,6 @@
                         <div style="margin:auto;">
                             <h:outputText value="#{productController.pagination.pageFirstItem + 1}..#{productController.pagination.pageLastItem + 1}/#{productController.pagination.itemsCount}" />&nbsp;
                             <h:commandLink action="#{productController.previous}" value="#{bundle.Previous} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasPreviousPage}" />&nbsp;
-
                             <h:commandLink action="#{productController.next}" value="#{bundle.Next} #{productController.pagination.pageSize}" rendered="#{productController.pagination.hasNextPage}" />&nbsp;
                             <div class="row">
                                 <div class="col-md-12">
@@ -44,6 +43,16 @@
                                             </f:facet>
                                             <h:outputText value="#{item.productName}" />
                                         </h:column>
+                                        <h:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Catgories" />
+                                            </f:facet>
+
+                                            <ui:repeat value="#{productController.getProductCegory(item)}" var="cat">
+                                                #{cat.name},
+                                            </ui:repeat>
+                                        </h:column>
+
                                         <h:column>
                                             <f:facet name="header">
                                                 <h:outputText value="&nbsp;" />

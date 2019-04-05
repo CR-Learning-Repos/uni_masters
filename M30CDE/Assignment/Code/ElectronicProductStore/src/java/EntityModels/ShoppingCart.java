@@ -39,6 +39,19 @@ public class ShoppingCart {
         return productEjbFacade;
     }
 
+    public Long getCartTotal() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+        Map<Long, Long> hashlist = (HashMap<Long, Long>) session.getAttribute("shoppingcart");
+
+        Long total = 0l;
+        for (Map.Entry<Long, Long> entry : hashlist.entrySet()) {
+            Long key = entry.getKey();
+            Long totalItem = this.getTotalForItem(key);
+            total = total + totalItem;
+        }
+        return total;
+    }
+
     public List<Product> getList() {
 
         if (this.list == null) {
