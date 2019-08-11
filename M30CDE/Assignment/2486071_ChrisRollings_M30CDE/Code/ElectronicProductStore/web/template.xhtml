@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <base href="/ElectronicProductStore/faces"></base>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    </h:head>
+    <h:body class="container">        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!--Site Logo-->
+            <h:form >
+                <h:commandLink action="/home/index">     
+                    <img src="images/SiteLogo.jpg" width="30" height="30" alt=""/>
+                </h:commandLink>
+            </h:form>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <h:form>
+                            <h:commandLink class="nav-link" action="/home/index" value="Shop">     
+
+                            </h:commandLink>
+                        </h:form>
+
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <li class="nav-item active">
+
+                        <!-- <h:form styleClass="jsfcrud_list_form" >
+                             <h:commandLink class="btn btn-outline-success my-2 my-sm-0" action="/Admin" value="Login"/>
+                         </h:form> -->
+
+                        <form name="shoppingForm"  action="admin"  method="GET">
+                            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Admin"/>
+                        </form>                    
+                    </li>
+                </div>
+            </div>
+        </nav>
+        <h1>
+            <ui:insert name="title">Default Title</ui:insert>
+        </h1>
+        <p>
+            <ui:insert name="body">Default Body</ui:insert>
+        </p>
+
+        <div id="alertModal"  class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="site.js" type="text/javascript"></script>
+    </h:body>
+
+</html>
